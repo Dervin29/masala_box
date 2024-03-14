@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Logo from "./img/logo.png";
-import Avatar from "./img/avatar.png";
+import Logo from "../img/logo.png";
+import Avatar from "../img/avatar.png";
 import { MdShoppingCart, MdAdd, MdLogout } from "react-icons/md";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -42,7 +42,7 @@ const Header = () => {
   }
 
   return (
-    <header className=" fixed  z-50 w-screen p-3  px-4 md:p-6 md:px-16">
+    <header className=" fixed  z-50 w-screen p-2  px-4 md:p-6 md:px-16 bg-primary">
       {/* desktop and tablet */}
       <div className=" hidden md:flex w-full h-full items-center justify-between">
         <Link to={"/"} className="flex items-center gap-2 underline-none">
@@ -70,12 +70,16 @@ const Header = () => {
               Services
             </li>
           </motion.ul>
+
+
           <div className=" relative flex items-center justify-center ">
             <MdShoppingCart className="text-textColor text-2xl ml-8 cursor-pointer" />
             <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
               <p className="text-xs text-white font-semibold">2</p>
             </div>
           </div>
+
+
           <div className="relative">
             <motion.img
               whileTap={{ scale: 0.6 }}
@@ -109,10 +113,21 @@ const Header = () => {
       </div>
       {/* mobile */}
       <div className=" flex items-center justify-between md:hidden w-full h-full  p-4">
-        <Link to={"/"} className="flex items-center gap-2 underline-none">
+        
+
+        <div className=" relative flex items-center justify-center ">
+            <MdShoppingCart className="text-textColor text-2xl ml-8 cursor-pointer" />
+            <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
+              <p className="text-xs text-white font-semibold">2</p>
+            </div>
+          </div>
+
+          <Link to={"/"} className="flex items-center gap-2 underline-none">
           <img src={Logo} className="w-8 object-cover" alt="logo"></img>
           <p className=" text-headingColor text-xl font-bold "> MasalaBox</p>
         </Link>
+
+
         <div className="relative">
           <motion.img
             whileTap={{ scale: 0.6 }}
