@@ -62,7 +62,7 @@ const HomeContainer = () => {
                   className=" w-20  lg:w-40 -mt-10 lg:-mt-20 "
                   alt="ice cream"
                 />
-                <p className="text-base lg:text-xl font-semibold text-textColor mt-2 lg:mt-4">
+                <p className="text-base lg:text-xl font-semibold text-textColor mt-0 lg:mt-3">
                   {n.name}
                 </p>
                 <p className=" text-[12px] lg:text-sm  font-semibold text-lighttextGray my-1 lg:my-3">
