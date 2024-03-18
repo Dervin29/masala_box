@@ -4,14 +4,25 @@ import {
   MdCloudUpload,
   MdFastfood,
   MdDelete,
-  MdFoodBank,
+  MdCurrencyRupee,
 } from "react-icons/md";
+
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { storage } from "../firebase.config";
+
 import { categories } from "../utils/data";
 import Loader from "./Loader";
+import { getAllFoodItems, saveItem } from "../utils/firebaseFunctions";
+import { actionType } from "../context/reducer";
+import { useStateValue } from "../context/StateProvider";
 
 const CreateContainer = () => {
   const [title, setTitle] = useState("");
-  const [calories, setCalories] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState(null);
   const [imageAsset, setImageAsset] = useState(null);
@@ -20,9 +31,115 @@ const CreateContainer = () => {
   const [msg, setMsg] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const uploadImage = () => {};
+  const [{ foodItems }, dispatch] = useStateValue();
 
-  const deleteImage = () => {};
+  const uploadImage = (e) => {
+    setIsLoading(true);
+    const imageFile = e.target.files[0];
+    const storageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, imageFile);
+    uploadTask.on(
+      "state_change",
+      (snapshot) => {
+        const uploadProgress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      },
+      (error) => {
+        console.log(error);
+        setFields(true);
+        setMsg("error while uploading : Try Again");
+        setAlertStatus("danger");
+        setTimeout(() => {
+          setFields(false);
+          setIsLoading(false);
+        }, 4000);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setImageAsset(downloadURL);
+          setIsLoading(false);
+          setFields(true);
+          setMsg("image uploaded successfully");
+          setAlertStatus("success");
+          setTimeout(() => {
+            setFields(false);
+          }, 4000);
+        });
+      }
+    );
+  };
+
+  const deleteImage = () => {
+    setIsLoading(true);
+    const deleteRef = ref(storage, imageAsset);
+    deleteObject(deleteRef).then(() => {
+      setImageAsset(null);
+      setIsLoading(false);
+      setFields(true);
+      setMsg("image deleted successfully");
+      setTimeout(() => {
+        setFields(false);
+      }, 4000);
+    });
+  };
+
+  const saveDetails = () => {
+    setIsLoading(true);
+    try {
+      if (!title || !imageAsset || !price || !category) {
+        setFields(true);
+        setMsg("required fields must be entered");
+        setAlertStatus("danger");
+        setTimeout(() => {
+          setFields(false);
+          setIsLoading(false);
+        }, 4000);
+      } else {
+        const data = {
+          id: `${Date.now()}`,
+          title: title,
+          imageURL: imageAsset,
+          category: category,
+          quantity: 1,
+          price: price,
+        };
+        saveItem(data);
+        setFields(true);
+        setMsg("Data uploaded successfully");
+        clearData();
+        setAlertStatus("success");
+        setTimeout(() => {
+          setFields(false);
+        }, 4000);
+      }
+    } catch (error) {
+      console.log(error);
+      setFields(true);
+      setMsg("error while uploading : Try Again");
+      setAlertStatus("danger");
+      setTimeout(() => {
+        setFields(false);
+        setIsLoading(false);
+      }, 4000);
+    }
+    fetchData();
+  };
+
+  const clearData = () => {
+    setTitle("");
+    setImageAsset(null);
+    setCategory("select category");
+    setPrice("");
+  };
+
+  const fetchData = async () => {
+    await getAllFoodItems().then((data) => {
+      dispatch({
+        type: actionType.SET_FOOD_ITEMS,
+        foodItems: data,
+      });
+    });
+  };
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center">
@@ -50,7 +167,7 @@ const CreateContainer = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="enter the title.."
-            className=" w-full h-full text-lg bg-white p-3 rounded-md font-semibold outline-none border-none placeholder:text-gray-500 text-textColor"
+            className=" w-full h-full text-lg bg-white p-3 rounded-md font-semibold outline-none border-none placeholder:text-gray-400 text-textColor"
           />
         </div>
         <div className="w-full">
@@ -119,15 +236,25 @@ const CreateContainer = () => {
         </div>
         <div className=" w-full flex flex-col md:flex-row items-center gap-3 ">
           <div className=" w-full py-2 border-gray-300 flex items-center gap-2">
-            <MdFoodBank className=" text-gray-700 text-2xl" />
+            <MdCurrencyRupee className=" text-gray-700 text-2xl" />
             <input
               type="text"
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
-              placeholder="Price"
+              placeholder="price"
               className=" w-full h-full  text-lg font-semibold bg-white p-3 rounded-md outline-none border-none placeholder:text-gray-400 text-textColor"
               required
             />
           </div>
+        </div>
+        <div className=" flex items-center w-full">
+          <button
+            type="button"
+            className=" ml-0 md:ml-auto w-full md:w-auto border-none outline-none bg-emerald-500 px-12 py-2 rounded-lg font-semibold "
+            onClick={saveDetails}
+          >
+            Save
+          </button>
         </div>
       </div>
     </div>
