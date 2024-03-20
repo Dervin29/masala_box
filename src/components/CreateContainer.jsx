@@ -126,6 +126,7 @@ const CreateContainer = () => {
   };
 
   const clearData = () => {
+  setIsLoading(false);
     setTitle("");
     setImageAsset(null);
     setCategory("select category");

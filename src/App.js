@@ -8,7 +8,7 @@ import { actionType } from "./context/reducer";
 
 const App = () => {
 
-  const [{ foodItems }, dispatch] = useStateValue();
+  const [{foodItems}, dispatch] = useStateValue();
 
   const fetchData = async () => {
     await getAllFoodItems().then((data) => {
@@ -26,7 +26,6 @@ const App = () => {
 
   return (
     <AnimatePresence >
-      {" "}
       <div className=" w-screen h-auto flex flex-col bg-primary ">
         <Header />
         <main className="mt-14 md:mt:20 px-4 md:px-16 py-6  w-full">
