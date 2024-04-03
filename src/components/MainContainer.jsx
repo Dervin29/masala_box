@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import RowContainer from "./RowContainer";
 import { useStateValue } from "../context/StateProvider";
+import MenuContainer from "./MenuContainer";
 
 const MainContainer = () => {
   const [{ foodItems }, dispatch] = useStateValue();
@@ -18,7 +19,7 @@ const MainContainer = () => {
       <section className=" w-full my-6">
         <div className=" w-full flex items-center justify-between">
           <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-orange-600 transition-all ease-in-out duration-100">
-            Our Menu
+            Our Dishes
           </p>
           <div className=" hidden md:flex gap-3 items-center">
             <motion.div
@@ -44,6 +45,8 @@ const MainContainer = () => {
           data={foodItems?.filter((n) => n.category === "fried-rice")}
         />
       </section>
+
+      <MenuContainer/>
     </div>
   );
 };
