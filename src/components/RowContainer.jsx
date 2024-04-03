@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import nf from "../img/not-found.png"
+import nf from "../img/not-found.png";
 import { MdShoppingBasket, MdCurrencyRupee } from "react-icons/md";
 import { motion } from "framer-motion";
 
@@ -35,6 +35,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
                 <img
                   src={item?.imageURL}
                   className="w-full h-full object-contain"
+                  alt="food item"
                 />
               </motion.div>
               <motion.div
@@ -60,8 +61,10 @@ const RowContainer = ({ flag, data, scrollValue }) => {
         ))
       ) : (
         <div className=" w-full flex flex-col items-center justify-center">
-          <img className=" h-340" src={nf} />
-          <p className=" text-xl text-headingColor font-semibold">Items Not Available</p>
+          <img className=" h-340" src={nf} alt="item not found" />
+          <p className=" text-xl text-headingColor font-semibold">
+            Items Not Available
+          </p>
         </div>
       )}
     </div>

@@ -8,7 +8,7 @@ export const heroData = [
     id: 1,
     name: "Fried Rice",
     decp: "Veg Fried Rice",
-    price: "Rs. 120",
+    price: "Rs. 70",
     imageSrc: fried,
   },
   {
@@ -22,14 +22,14 @@ export const heroData = [
     id: 3,
     name: "Pasta",
     decp: "Red Sauce Pasta",
-    price: "Rs. 250",
+    price: "Rs. 149",
     imageSrc: redsauce,
   },
   {
     id: 4,
     name: "Mocktails",
     decp: "Blue Lagoon",
-    price: "Rs. 120",
+    price: "Rs. 70",
     imageSrc: bluelagoon,
   },
 ];
