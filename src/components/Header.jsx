@@ -53,8 +53,8 @@ const Header = () => {
       {/* desktop and tablet */}
       <div className=" hidden md:flex w-full h-full items-center justify-between">
         <Link to={"/"} className="flex items-center gap-2 decoration-transparent">
-          <img src={Logo} className="w-8 object-cover" alt="logo"></img>
-          <p className=" text-headingColor text-xl font-bold "> MasalaBox</p>
+          <img src={Logo} className="w-10 object-cover" alt="logo"></img>
+          <p className=' text-headingColor text-2xl font-bold ml-2'>MASALA<span className=' text-red-600'>BOX</span></p>
         </Link>
 
         <div className=" flex items-center gap-8">
@@ -73,9 +73,7 @@ const Header = () => {
             <li className=" text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               About Us
             </li>
-            <li className=" text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              Services
-            </li>
+            
           </motion.ul>
 
 

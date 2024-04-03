@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { motion } from "framer-motion";
 import { RiRefreshFill } from "react-icons/ri";
@@ -8,7 +8,6 @@ import { app } from "../firebase.config";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { actionType } from "../context/reducer";
 import CartItems from "./CartItems";
-
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
@@ -57,9 +56,6 @@ const CartContainer = () => {
     localStorage.setItem("cartItems", JSON.stringify([]));
   };
 
-  
-
-
   return (
     <motion.div
       initial={{ opacity: 0, x: 200 }}
@@ -81,7 +77,8 @@ const CartContainer = () => {
         <motion.p
           whileTap={{ scale: 0.75 }}
           className="flex items-center gap-2 p-1 px-2 my-2 bg-gray-100 rounded-md hover:shadow-md  cursor-pointer text-textColor text-base"
-          onClick={clearCart} >
+          onClick={clearCart}
+        >
           Clear <RiRefreshFill />
         </motion.p>
       </div>
@@ -91,8 +88,12 @@ const CartContainer = () => {
           <div className="w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none ">
             {cartItems &&
               cartItems.map((item) => (
-               <CartItems key={item.id} item={item} setFlag={setFlag}
-               flag={flag}/>
+                <CartItems
+                  key={item.id}
+                  item={item}
+                  setFlag={setFlag}
+                  flag={flag}
+                />
               ))}
           </div>
 
@@ -107,35 +108,37 @@ const CartContainer = () => {
               <p className=" text-gray-400 text-lg">Rs. 150</p>
             </div>
 
+            <hr className="w-full border-gray-400" />
+
             <div className=" w-full border-b border-gray-600 my-2"></div>
             <div className=" w-full flex items-center justify-between">
               <p className=" text-gray-200 text-xl font-semibold">Total</p>
-              <p className=" text-gray-200 text-xl font-semibold">Rs. {tot + 150}</p>
+              <p className=" text-gray-200 text-xl font-semibold">
+                Rs. {tot + 150}
+              </p>
             </div>
 
             {user ? (
               <motion.button
-              whileTap={{ scale: 0.8 }}
-              type="button"
-              className=" w-full p-2 rounded-full bg-yellow-600 border-none text-gray-50 text-lg my-2
+                whileTap={{ scale: 0.8 }}
+                type="button"
+                className=" w-full p-2 rounded-full bg-yellow-600 border-none text-gray-50 text-lg my-2
         hover:shadow-lg "
-            >
-              {" "}
-              Check Out
-            </motion.button>
-            ): (
-
+              >
+                {" "}
+                Check Out
+              </motion.button>
+            ) : (
               <motion.button
                 whileTap={{ scale: 0.8 }}
                 type="button"
                 className=" w-full p-2 rounded-full bg-yellow-600 border-none text-gray-50 text-lg my-2
           hover:shadow-lg "
-          onClick={login}
+                onClick={login}
               >
                 {" "}
                 Login to Check Out
               </motion.button>
-
             )}
           </div>
         </div>
