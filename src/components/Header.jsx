@@ -79,7 +79,7 @@ const Header = () => {
                 Menu
               </li>
             </Link>
-            <Link to={"/"} className=" no-underline">
+            <Link to={"/about"} className=" no-underline">
               <li className=" text-base text-gray-300 hover:text-red-600 duration-100 transition-all ease-in-out cursor-pointer">
                 About Us
               </li>
@@ -145,8 +145,10 @@ const Header = () => {
           className=" relative flex items-center justify-center "
           onClick={showCart}
         >
-          <MdShoppingCart className="text-gray-300
-           hover:text-red-600 text-2xl ml-8 cursor-pointer" />
+          <MdShoppingCart
+            className="text-gray-300
+           hover:text-red-600 text-2xl ml-8 cursor-pointer"
+          />
           {cartItems && cartItems.length > 0 && (
             <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
               <p className="text-xs text-white font-semibold">
@@ -161,7 +163,9 @@ const Header = () => {
           className="flex items-center gap-2 decoration-transparent"
         >
           <img src={Logo} className="w-8 object-cover" alt="logo"></img>
-          <p className=" text-gray-300 text-xl font-bold ">MASALA<span className=" text-red-600">BOX</span></p>
+          <p className=" text-gray-300 text-xl font-bold ">
+            MASALA<span className=" text-red-600">BOX</span>
+          </p>
         </Link>
 
         <div className="relative">
@@ -204,13 +208,15 @@ const Header = () => {
                     Menu
                   </li>
                 </Link>
+                <Link to={"/about"} className=" no-underline">
+                  <li
+                    onClick={() => setIsMenu(false)}
+                    className=" text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100  px-4 py-2"
+                  >
+                    About Us
+                  </li>
+                </Link>
 
-                <li
-                  onClick={() => setIsMenu(false)}
-                  className=" text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100  px-4 py-2"
-                >
-                  About Us
-                </li>
                 <Link to={"/contact"} className="no-underline">
                   <li
                     onClick={() => setIsMenu(false)}

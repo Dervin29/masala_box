@@ -49,11 +49,11 @@ const MenuComponent = ({ data }) => {
   }, {})).sort((a, b) => customSort(a, b));
 
   return (
-    <div className="w-full h-auto mt-4 flex flex-col items-center">
+    <div className="w-full h-auto mt-2 flex flex-col items-center">
       {sortedCategories.length > 0 ? (
         sortedCategories.map((category) => (
           <section key={category} className="w-full mx-0">
-            <div className="w-full flex justify-between">
+            <div className="w-full flex justify-between ">
               <p className="text-3xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-orange-600 transition-all ease-in-out duration-100">
                 Our <span className="text-red-600">{category}</span>
               </p>

@@ -38,16 +38,19 @@ const Footer = () => {
               </Typography>
             </li>
           </Link>
-          <li>
-            <Typography
-              as="a"
-              href="#"
-              color="blue-gray"
-              className=" text-lg font-normal transition-colors text-gray-200 hover:text-red-600 focus:text-red-600 no-underline"
-            >
-              About Us
-            </Typography>
-          </li>
+          <Link to={"/about"} className="">
+            <li>
+              <Typography
+                as="a"
+                href="#"
+                color="blue-gray"
+                className=" text-lg font-normal transition-colors text-gray-200 hover:text-red-600 focus:text-red-600 no-underline"
+              >
+                About Us
+              </Typography>
+            </li>
+          </Link>
+
           <Link to={"/contact"} className=" no-underline">
             {" "}
             <li>
@@ -61,8 +64,6 @@ const Footer = () => {
               </Typography>
             </li>
           </Link>
-
-          
         </ul>
       </div>
       <hr className="my-8 border-blue-gray-50" />

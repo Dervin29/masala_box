@@ -9,4 +9,5 @@ export {default as MenuComponent} from './MenuComponent';
 export {default as CartContainer} from './CartContainer';
 export {default as CartItems} from './CartItems';
 export {default as ContactUs} from './ContactUs';
+export {default as About} from './About';
 export {default as Footer} from './Footer';
