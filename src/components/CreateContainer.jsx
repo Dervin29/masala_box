@@ -140,7 +140,7 @@ const CreateContainer = () => {
   };
 
   return (
-    <div className="w-full my-2 flex items-center justify-center">
+    <div className="w-full my-6 flex items-center justify-center">
       <div className="w-[60%] md:w-[50%] bg-white border  rounded-lg p-4 flex flex-col items-center justify-center gap-4 ">
         <Typography variant="h4" color="blue-gray" className=" -my-1 ">
           Add <span className=" text-red-600">Item</span>

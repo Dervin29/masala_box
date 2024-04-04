@@ -49,7 +49,7 @@ const Header = () => {
   };
 
   return (
-    <header className=" fixed  z-50 w-screen p-2  px-4 md:p-6 md:px-16 bg-primary">
+    <header className=" fixed  z-50 w-screen p-2  px-4 md:p-6 md:px-16 bg-cartBg">
       {/* desktop and tablet */}
       <div className=" hidden md:flex w-full h-full items-center justify-between">
         <Link
@@ -57,7 +57,7 @@ const Header = () => {
           className="flex items-center gap-2 decoration-transparent"
         >
           <img src={Logo} className="w-10 object-cover" alt="logo"></img>
-          <p className=" text-headingColor text-2xl font-bold ml-2">
+          <p className=" text-gray-300 text-2xl font-bold ml-2">
             MASALA<span className=" text-red-600">BOX</span>
           </p>
         </Link>
@@ -70,23 +70,23 @@ const Header = () => {
             className=" flex items-center gap-8 list-none"
           >
             <Link to={"/"} className=" no-underline">
-              <li className=" text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+              <li className=" text-base text-gray-300 hover:text-red-600 duration-100 transition-all ease-in-out cursor-pointer">
                 Home
               </li>
             </Link>
             <Link to={"/menu"} className=" no-underline">
-              <li className=" text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+              <li className=" text-base text-gray-300 hover:text-red-600 duration-100 transition-all ease-in-out cursor-pointer">
                 Menu
               </li>
             </Link>
             <Link to={"/"} className=" no-underline">
-              <li className=" text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+              <li className=" text-base text-gray-300 hover:text-red-600 duration-100 transition-all ease-in-out cursor-pointer">
                 About Us
               </li>
             </Link>
 
             <Link to={"/contact"} className=" no-underline">
-              <li className=" text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+              <li className=" text-base text-gray-300 hover:text-red-600 duration-100 transition-all ease-in-out cursor-pointer">
                 Contact Us
               </li>
             </Link>
@@ -96,7 +96,7 @@ const Header = () => {
             className=" relative flex items-center justify-center "
             onClick={showCart}
           >
-            <MdShoppingCart className="text-textColor text-2xl ml-8 cursor-pointer" />
+            <MdShoppingCart className="text-gray-300 hover:text-red-600 text-2xl ml-8 cursor-pointer" />
             {cartItems && cartItems.length > 0 && (
               <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
                 <p className="text-xs text-white font-semibold">
@@ -145,7 +145,8 @@ const Header = () => {
           className=" relative flex items-center justify-center "
           onClick={showCart}
         >
-          <MdShoppingCart className="text-textColor text-2xl ml-8 cursor-pointer" />
+          <MdShoppingCart className="text-gray-300
+           hover:text-red-600 text-2xl ml-8 cursor-pointer" />
           {cartItems && cartItems.length > 0 && (
             <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
               <p className="text-xs text-white font-semibold">
@@ -160,7 +161,7 @@ const Header = () => {
           className="flex items-center gap-2 decoration-transparent"
         >
           <img src={Logo} className="w-8 object-cover" alt="logo"></img>
-          <p className=" text-headingColor text-xl font-bold "> MasalaBox</p>
+          <p className=" text-gray-300 text-xl font-bold ">MASALA<span className=" text-red-600">BOX</span></p>
         </Link>
 
         <div className="relative">
@@ -220,7 +221,7 @@ const Header = () => {
                 </Link>
               </ul>
               <p
-                className=" m-2 p-2 rounded-md flex items-center justify-center bg-gray-200  gap-3 cursor-pointer hover:bg-gray-300  transition-all duration-100 ease-in-out text-textColor text-base"
+                className=" m-2 p-2 rounded-md flex items-center justify-center bg-red-600 text-white gap-3 cursor-pointer hover:bg-red-500  transition-all duration-100 ease-in-out text-textColor text-base"
                 onClick={logout}
               >
                 Logout <MdLogout />

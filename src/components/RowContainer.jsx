@@ -9,25 +9,19 @@ const RowContainer = ({ flag, data, scrollValue }) => {
   console.log(data);
 
   const rowContainer = useRef();
+  const [{ cartItems }, dispatch] = useStateValue();
 
-  const [items, setItems] = useState([]);
+  const addToCart = (item) => {
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: [...cartItems, item],
+    });
+    localStorage.setItem("cartItems", JSON.stringify([...cartItems, item]));
+  };
 
   useEffect(() => {
     rowContainer.current.scrollLeft += scrollValue;
   }, [scrollValue]);
-   
-  const [{ cartItems }, dispatch] = useStateValue();
-
-  useEffect (()=> {addToCart()}, [items])
-
-  const addToCart = () => {
-    
-    dispatch({
-      type: actionType.SET_CART_ITEMS,
-      cartItems: items,
-    })
-    localStorage.setItem("cartItems", JSON.stringify(cartItems))
-  }
 
   return (
     <div
@@ -51,14 +45,14 @@ const RowContainer = ({ flag, data, scrollValue }) => {
               >
                 <img
                   src={item?.imageURL}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full "
                   alt="food item"
                 />
               </motion.div>
               <motion.div
                 whileTap={{ scale: 0.75 }}
                 className=" w-8 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md"
-                onClick={()=> setItems([...cartItems, item])}
+                onClick={() => addToCart(item)}
               >
                 <MdShoppingBasket className=" text-white" />
               </motion.div>
