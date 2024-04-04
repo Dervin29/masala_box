@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  MdCloudUpload,
-  MdFastfood,
-  MdDelete,
-  MdCurrencyRupee,
-} from "react-icons/md";
+import { MdCloudUpload, MdDelete } from "react-icons/md";
+import { Button, Typography } from "@material-tailwind/react";
 
 import {
   deleteObject,
@@ -103,14 +99,15 @@ const CreateContainer = () => {
           quantity: 1,
           price: price,
         };
+        setIsLoading(false);
         saveItem(data);
         setFields(true);
         setMsg("Data uploaded successfully");
-        clearData();
         setAlertStatus("success");
         setTimeout(() => {
           setFields(false);
         }, 4000);
+        clearData();
       }
     } catch (error) {
       console.log(error);
@@ -126,10 +123,10 @@ const CreateContainer = () => {
   };
 
   const clearData = () => {
-  setIsLoading(false);
+    setIsLoading(false);
     setTitle("");
     setImageAsset(null);
-    setCategory("select category");
+    setCategory("Select Category");
     setPrice("");
   };
 
@@ -143,8 +140,11 @@ const CreateContainer = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center">
-      <div className="w-[90%] md:w-[50%] bg-gray-200 border  rounded-lg p-4 flex flex-col items-center justify-center gap-4 ">
+    <div className="w-full my-2 flex items-center justify-center">
+      <div className="w-[60%] md:w-[50%] bg-white border  rounded-lg p-4 flex flex-col items-center justify-center gap-4 ">
+        <Typography variant="h4" color="blue-gray" className=" -my-1 ">
+          Add <span className=" text-red-600">Item</span>
+        </Typography>
         {fields && (
           <motion.p
             initial={{ opacity: 0 }}
@@ -159,31 +159,41 @@ const CreateContainer = () => {
             {msg}
           </motion.p>
         )}
-
-        <div className=" w-full py-2 border-b-2 border-gray-300 flex items-center gap-2">
-          <MdFastfood className=" text- text-gray-700 " />
+        <div className=" w-full h-full">
+          <label
+            for="small-input"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white "
+          >
+            Item Title
+          </label>
           <input
             type="text"
-            required
+            id="small-input"
+            class="block w-full p-2.5 bg-gray-200 text-gray-900 placeholder:text-gray-900  text-sm rounded-md border border-none dark:focus:ring-gray-500 dark:focus:border-gray-500"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="enter the title.."
-            className=" w-full h-full text-lg bg-white p-3 rounded-md font-semibold outline-none border-none placeholder:text-gray-400 text-textColor"
           />
         </div>
         <div className="w-full">
+          <label
+            for="small-input"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white "
+          >
+            Select the Item Category
+          </label>
           <select
             onChange={(e) => setCategory(e.target.value)}
-            className=" outline-none w-full p-3  text-base border-b-2 border-gray-200 rounded-md cursor-pointer"
+            className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
           >
-            <option value={"other"} className="bg-white">
+            <option value="other" className="bg-white">
               Select Category
             </option>
             {categories &&
               categories.map((item) => (
                 <option
                   key={item.id}
-                  className="text-base border-0 outline-none capitalize bg-white text-HeadingColor"
+                  className="text-base border-0 outline-none capitalize bg-white text-headingColor"
                   value={item.urlParamName}
                 >
                   {item.name}
@@ -191,7 +201,7 @@ const CreateContainer = () => {
               ))}
           </select>
         </div>
-        <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-340 cursor-pointer rounded-lg">
+        <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-600 w-full h-225 md:h-340 cursor-pointer rounded-lg">
           {isLoading ? (
             <Loader />
           ) : (
@@ -200,8 +210,8 @@ const CreateContainer = () => {
                 <>
                   <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer">
                     <div className="w-full h-full flex flex-col items-center justify-center gap-2">
-                      <MdCloudUpload className="text-gray-500 text-3xl hover:text-gray-700" />
-                      <p className="text-gray-500 hover:text-gray-700">
+                      <MdCloudUpload className="text-gray-600 text-3xl hover:text-gray-700" />
+                      <p className="text-gray-600 hover:text-gray-700">
                         Click here to upload
                       </p>
                     </div>
@@ -236,26 +246,32 @@ const CreateContainer = () => {
           )}
         </div>
         <div className=" w-full flex flex-col md:flex-row items-center gap-3 ">
-          <div className=" w-full py-2 border-gray-300 flex items-center gap-2">
-            <MdCurrencyRupee className=" text-gray-700 text-2xl" />
+          <div className=" w-full h-full">
+            <label
+              for="small-input"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white "
+            >
+              Item Price
+            </label>
             <input
               type="text"
+              id="small-input"
+              class="block w-full p-2.5 bg-gray-200 text-gray-900 placeholder:text-gray-900  text-sm rounded-md border border-none dark:focus:ring-gray-500 dark:focus:border-gray-500"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              placeholder="price"
-              className=" w-full h-full  text-lg font-semibold bg-white p-3 rounded-md outline-none border-none placeholder:text-gray-400 text-textColor"
-              required
+              placeholder="enter the price.."
             />
           </div>
         </div>
         <div className=" flex items-center w-full">
-          <button
-            type="button"
-            className=" ml-0 md:ml-auto w-full md:w-auto border-none outline-none bg-emerald-500 px-12 py-2 rounded-lg font-semibold "
+          <Button
+            className="mt-4 bg-red-600 outline-none border-none"
+            fullWidth
+            type="submit"
             onClick={saveDetails}
           >
             Save
-          </button>
+          </Button>
         </div>
       </div>
     </div>

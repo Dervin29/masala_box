@@ -9,14 +9,11 @@ const MenuContainer = () => {
   const [filter, setFilter] = useState("fried-rice");
 
   const [{foodItems}, dispatch] = useStateValue();
-
-
-  
   return (
-    <section className=" w-full my-6" id="menu">
-      <div className=" w-full flex flex-col items-center justify-normal">
-        <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-orange-600  mr-auto">
-          Our Hot Dishes
+    <section className=" w-full my-8" id="menu">
+      <div className=" w-full   flex flex-col items-center justify-normal">
+        <p className="text-3xl mb-4  font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-orange-600  mr-auto">
+          What are you <span className=" text-red-600"> craving </span> for?
         </p>
 
         <div  className=" w-full flex items-start justify-start lg:justify-center gap-8 py-6 overflow-auto scrollbar-none">

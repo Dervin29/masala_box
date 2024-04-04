@@ -7,6 +7,7 @@ import { useStateValue } from "../context/StateProvider";
 import MenuContainer from "./MenuContainer";
 import CartContainer from "./CartContainer";
 import Footer from "./Footer";
+import MenuComponent from "./MenuComponent";
 
 const MainContainer = () => {
   const [{ foodItems, cartShow}] = useStateValue();
@@ -15,13 +16,32 @@ const MainContainer = () => {
 
   useEffect(()=> {}, [scrollValue, cartShow]);
 
+  function getOneItemFromEachCategory(items) {
+    if (!items || !Array.isArray(items)) {
+      return [];
+    }
+  
+    const categories = [];
+    const result = [];
+  
+    // Filter unique categories
+    items.forEach(item => {
+      if (!categories.includes(item.category)) {
+        categories.push(item.category);
+        result.push(item);
+      }
+    });
+  
+    return result;
+  }
+
   return (
     <div className=" w-full h-auto flex flex-col items-center  ">
       <HomeContainer />
-      <section className=" w-full mx-0 my-6">
-        <div className=" w-full flex items-center justify-between">
-          <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-orange-600 transition-all ease-in-out duration-100">
-            Our Dishes
+      <section className=" w-full mx-0 my-8">
+        <div className=" w-full flex items-center justify-between ">
+          <p className="text-3xl  font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-orange-600 transition-all ease-in-out duration-100">
+            Our <span className=" text-red-600">Bestsellers</span>
           </p>
           <div className=" hidden md:flex gap-3 items-center">
             <motion.div
@@ -44,7 +64,8 @@ const MainContainer = () => {
         <RowContainer
           scrollValue={scrollValue}
           flag={true}
-          data={foodItems?.filter((n) => n.category === "fried-rice")}
+          data={getOneItemFromEachCategory(foodItems)}
+          // data={foodItems?.filter((n) => n.category === "fried-rice")}
         />
       </section>
 

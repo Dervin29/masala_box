@@ -30,11 +30,11 @@ const HomeContainer = () => {
             love of food!
           </span>
         </p>
-        <p className="text-base text-textColor text-center md:text-left">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+        <p className="text-lg font-normal text-textColor text-center md:text-left">
+          Discover culinary bliss at <span className=" text-red-600">MASALABOX</span>! From
+          mouthwatering appetizers to delectable mains and irresistible
+          desserts, we've got your cravings covered. Order now and elevate your
+          dining experience with just a click!
         </p>
 
         <button
