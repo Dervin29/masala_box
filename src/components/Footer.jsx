@@ -1,14 +1,14 @@
 import React from "react";
 import { Typography } from "@material-tailwind/react";
-import Logo from "../img/logo.png";
+import Logo from "../img/Masala_Box_Logo.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="w-screen h-auto bg-cartBg px-24 py-14">
+    <footer className="w-screen h-auto bg-cartBg px-24 py-3">
       <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-transparent text-center md:justify-between">
         <div className=" flex items-center justify-center">
-          <img className="w-12  object-cover" src={Logo} alt="logo" />
+          <img className="w-24 -mr-2 object-cover" src={Logo} alt="logo" />
           <p className=" text-gray-200 text-2xl font-bold ml-2">
             MASALA<span className=" text-red-600">BOX</span>
           </p>
@@ -38,7 +38,7 @@ const Footer = () => {
               </Typography>
             </li>
           </Link>
-          <Link to={"/about"} className="">
+          <Link to={"/about"} className=" no-underline">
             <li>
               <Typography
                 as="a"

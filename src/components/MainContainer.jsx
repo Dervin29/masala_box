@@ -91,7 +91,6 @@ const MainContainer = () => {
 
       <MenuContainer />
       {cartShow && <CartContainer />}
-      <Footer />
     </div>
   );
 };

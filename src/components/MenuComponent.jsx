@@ -74,7 +74,6 @@ const MenuComponent = ({ data }) => {
           </p>
         </div>
       )}
-      <Footer/>
     </div>
   );
 };

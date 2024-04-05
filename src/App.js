@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Header, MainContainer, CreateContainer, MenuComponent, ContactUs, About } from "./components";
+import { Header, MainContainer, CreateContainer, MenuComponent, ContactUs, About, Footer } from "./components";
 import { AnimatePresence } from "framer-motion";
 import { useStateValue } from "./context/StateProvider";
 import { getAllFoodItems } from "./utils/firebaseFunctions";
@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <AnimatePresence >
-      <div className=" w-screen h-auto flex flex-col bg-blue-gray-50 ">
+      <div className=" w-screen h-full flex flex-col bg-blue-gray-50 ">
         <Header />
         <main className="mt-14 md:mt:20 px-4 md:px-16 pt-10  w-full">
           <Routes>
@@ -37,6 +37,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
           </Routes>
         </main>
+        <Footer/>
       </div>
     </AnimatePresence>
   );

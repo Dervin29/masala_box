@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../img/logo.png";
+import Logo from "../img/Masala_Box_Logo.png";
 import Avatar from "../img/avatar.png";
 import { MdShoppingCart, MdAdd, MdLogout } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -56,7 +56,7 @@ const Header = () => {
           to={"/"}
           className="flex items-center gap-2 decoration-transparent"
         >
-          <img src={Logo} className="w-10 object-cover" alt="logo"></img>
+          <img src={Logo} className="w-20 -my-4 -mr-4 object-cover " alt="logo"></img>
           <p className=" text-gray-300 text-2xl font-bold ml-2">
             MASALA<span className=" text-red-600">BOX</span>
           </p>
@@ -81,13 +81,13 @@ const Header = () => {
             </Link>
             <Link to={"/about"} className=" no-underline">
               <li className=" text-base text-gray-300 hover:text-red-600 duration-100 transition-all ease-in-out cursor-pointer">
-                About Us
+                About
               </li>
             </Link>
 
             <Link to={"/contact"} className=" no-underline">
               <li className=" text-base text-gray-300 hover:text-red-600 duration-100 transition-all ease-in-out cursor-pointer">
-                Contact Us
+                Contact
               </li>
             </Link>
           </motion.ul>
@@ -162,7 +162,7 @@ const Header = () => {
           to={"/"}
           className="flex items-center gap-2 decoration-transparent"
         >
-          <img src={Logo} className="w-8 object-cover" alt="logo"></img>
+          <img src={Logo} className="w-16 -mr-2 -my-8 object-cover" alt="logo"></img>
           <p className=" text-gray-300 text-xl font-bold ">
             MASALA<span className=" text-red-600">BOX</span>
           </p>
@@ -213,7 +213,7 @@ const Header = () => {
                     onClick={() => setIsMenu(false)}
                     className=" text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100  px-4 py-2"
                   >
-                    About Us
+                    About
                   </li>
                 </Link>
 
@@ -222,7 +222,7 @@ const Header = () => {
                     onClick={() => setIsMenu(false)}
                     className="  text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100  px-4 py-2"
                   >
-                    Contact Us
+                    Contact
                   </li>
                 </Link>
               </ul>
